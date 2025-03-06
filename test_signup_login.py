@@ -63,6 +63,8 @@ def test_signup(driver):
         home_page.click_create_account()
         registration_page = RegistrationPage(driver)
         registration_page.register_user(firstname, lastname, email, password)
+        account_page = AccountPage(driver)
+        assert account_page.is_created()
         end_time = time.strftime("%Y-%m-%d %H:%M:%S")
         log_result(test_id, "test_signup", description, preconditions, expected_result, "Pass", round(time.time() - execution_start, 2), start_time, end_time)
     except Exception as e:
@@ -80,11 +82,13 @@ def test_login(driver):
     test_id = "TC_002"
     description = "User should be able to log in successfully"
     preconditions = "User has registered an account"
-    expected_result = "User gets Welcome Username in the Dropdown"
+    expected_result = "User is redirected to their account page after login"
     start_time = time.strftime("%Y-%m-%d %H:%M:%S")
     execution_start = time.time()
     try:
-        driver.get(f'{website_link}customer/account/login/')
+        driver.get(f'{website_link}')
+        home_page = HomePage(driver)
+        home_page.click_sign_in()
         login_page = LoginPage(driver)
         login_page.login_user(email, password)
         account_page = AccountPage(driver)

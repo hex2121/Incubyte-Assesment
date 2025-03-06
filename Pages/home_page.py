@@ -15,3 +15,11 @@ class HomePage(BasePage):
         # Wait for the "Create an Account" link to be clickable
         create_account_link = self.wait_for_clickable((By.LINK_TEXT, "Create an Account"))
         create_account_link.click()
+
+    def click_sign_in(self):
+        """
+        Click on the "Create an Account" link to navigate to the registration page.
+        """
+        # Wait for the "Create an Account" link to be clickable
+        create_account_link = self.wait_for_clickable((By.LINK_TEXT, "Sign In"))
+        create_account_link.click()
