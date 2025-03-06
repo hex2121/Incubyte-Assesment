@@ -1,0 +1,1 @@
+create_an_account_button = '//a/following-sibling::ul//a[text()="Create an Account"]'
