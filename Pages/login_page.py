@@ -9,7 +9,7 @@ from .base_page import BasePage
 from Locators.login_page_locators import *
 
 class LoginPage(BasePage):
-    def login(self, email, password):
+    def login_user(self, email, password):
         """
         Log in to the application using the provided credentials.
 

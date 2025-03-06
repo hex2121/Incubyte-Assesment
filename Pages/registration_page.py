@@ -9,7 +9,7 @@ from Locators.registration_page_locators import *
 
 
 class RegistrationPage(BasePage):
-    def register(self, first_name, last_name, email, password):
+    def register_user(self, first_name, last_name, email, password):
         """
         Fill in the registration form and submit it.
 

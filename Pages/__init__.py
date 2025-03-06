@@ -10,3 +10,5 @@ Usage:
 from .base_page import BasePage            # Base class with common page functions
 from .home_page import HomePage             # Home page object
 from .registration_page import RegistrationPage  # Registration page object
+from .login_page import LoginPage           # Login page object
+from .account_page import AccountPage       # Account page object
