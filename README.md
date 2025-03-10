@@ -1,12 +1,28 @@
 # Incubyte Assessment
 
 ## Overview
-This project is an automation testing suite designed to verify the signup and login functionality. It includes test scripts, dependencies, and test results.
+This project is an automation testing suite designed to verify the signup and login functionality using Behavior-Driven Development (BDD) approach. It includes Gherkin feature files, step definitions, test scripts, and comprehensive test result reporting.
 
 ## Features
-- Automated testing for signup and login functionalities.
-- Uses Python for scripting.
-- Test results are stored in an Excel file (`test_results.xlsx`).
+- BDD-style test automation using pytest-bdd
+- Gherkin feature files for clear test specifications
+- Step definitions mapping features to test code
+- Automated testing for signup and login functionalities
+- Detailed test results logging in Excel format
+- Page Object Model design pattern
+- Uses Python and Selenium WebDriver
+
+## Project Structure
+```
+├── Config/           # Configuration files
+├── Locators/         # Page element locators
+├── Pages/           # Page Object Model implementations
+├── Tests/           # Traditional test implementations
+├── features/        # BDD feature files and step definitions
+│   ├── signup_login.feature    # Gherkin scenarios
+│   └── steps/                  # Step definition implementations
+└── Utilities/       # Helper utilities
+```
 
 ## Installation
 
@@ -27,18 +43,57 @@ This project is an automation testing suite designed to verify the signup and lo
    pip install -r requirements.txt
    ```
 
-## Usage
-Run the test script with:
+## Test Execution
+
+### Running BDD Tests
+Execute the BDD tests using pytest-bdd:
 ```bash
-python test_signup_login.py
+pytest features/steps/test_signup_login_steps.py -v
+or 
+pytest test_signup_login_steps.py -v
 ```
-For your convenience, the `test_signup_login.py` file has been placed outside the `tests` directory so that you can easily run it.
+
+### Running Traditional Tests
+Run the traditional test suite:
+```bash
+pytest Tests/test_signup_login.py -v
+```
+
+## Test Scenarios
+The test suite covers the following scenarios:
+
+### User Registration
+```gherkin
+Scenario: New user registration
+  Given I am on the home page
+  When I click on create account
+  And I enter my registration details
+  Then I should be successfully registered
+```
+
+### User Login
+```gherkin
+Scenario: Registered user login
+  Given I am a registered user
+  When I enter my login credentials
+  Then I should be successfully logged in
+```
+
+## Test Results
+Test execution results are automatically logged to `test_results.xlsx` with the following information:
+- Test Case ID
+- Test Case Name
+- Description
+- Preconditions
+- Expected Result
+- Status (Pass/Fail)
+- Execution Time
+- Start/End Time
+- Browser and OS details
+- Error messages (if any)
 
 ## Environment Variables
 Ensure that your `.env` file contains the necessary configuration for the tests to run properly. The `.env` file has been uploaded to the Git repository for your reference.
-
-## Results
-Test results are stored in `test_results.xlsx`.
 
 ## Contributing
 If you would like to contribute, please submit a pull request with detailed explanations of your changes.
